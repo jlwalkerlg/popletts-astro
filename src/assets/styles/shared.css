@@ -1,0 +1,242 @@
+/* brown-sugar-regular */
+@font-face {
+  font-display: swap;
+  font-family: 'Brown Sugar';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/brown-sugar.woff2') format('woff2');
+}
+
+/* mulish-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/mulish-v13-latin-regular.woff2') format('woff2');
+}
+/* mulish-italic - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Mulish';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/mulish-v13-latin-italic.woff2') format('woff2');
+}
+/* mulish-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/mulish-v13-latin-500.woff2') format('woff2');
+}
+/* mulish-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/mulish-v13-latin-600.woff2') format('woff2');
+}
+/* mulish-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/mulish-v13-latin-700.woff2') format('woff2');
+}
+/* mulish-800 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../fonts/mulish-v13-latin-800.woff2') format('woff2');
+}
+
+:root {
+  --colour-dark-blue: #25313c;
+  --colour-turquoise: #beded6;
+  --colour-orange: #e54e29;
+  --colour-grey: #e6e6e6;
+
+  --font-family-heading: 'Brown Sugar', sans-serif;
+  --font-family-body: 'Mulish', sans-serif;
+
+  --font-body: 1.25rem/163.2% var(--font-family-body);
+  --font-colour-body: rgba(53, 52, 57, 0.85);
+  --font-colour-body-lighter: rgba(53, 52, 57, 0.75);
+
+  --box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 30px 0px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+body {
+  color: var(--font-colour-body);
+  font: var(--font-body);
+  font-weight: 400;
+}
+
+body.show-mobile-nav {
+  overflow: hidden;
+  height: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* reset buttons */
+button,
+.btn-primary,
+.btn-secondary {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+/* reset links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* reset addresses */
+address {
+  font: inherit;
+}
+
+/* Components */
+.container,
+.container-small {
+  padding-inline: 1rem;
+  margin-inline: auto;
+}
+
+.container {
+  max-width: 1163px;
+}
+
+.container-small {
+  max-width: 566px;
+}
+
+.section {
+  padding-block: 5rem;
+}
+
+.h1,
+.h2,
+.h3,
+.h4 {
+  color: var(--colour-dark-blue);
+  font-weight: 400;
+  font-family: var(--font-family-heading);
+}
+
+.h1 {
+  font-size: 4rem;
+  line-height: 3.375rem;
+}
+
+.h2 {
+  font-size: 3.375rem;
+  line-height: 1em;
+}
+
+.h3 {
+  font-size: 3rem;
+}
+
+.h4 {
+  font-size: 2.125rem;
+  line-height: 163.2%;
+}
+
+.subheading {
+  color: var(--font-colour-body-lighter);
+  font-weight: 500;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  border-radius: 20px;
+  font-weight: 700;
+  padding: 0.25em 1.25em;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--colour-orange);
+  color: #ffffff;
+  border: 2px solid var(--colour-orange);
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--colour-orange);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--colour-orange);
+  border: 2px solid var(--colour-orange);
+}
+
+.btn-secondary:hover {
+  background-color: var(--colour-orange);
+  color: #ffffff;
+}
+
+.btn-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-dropdown svg {
+  width: 0.75em;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-icon-link {
+  display: block;
+  width: 40px;
+  padding: 0.5rem;
+  background-color: rgba(53, 52, 57, 0.75);
+  border-radius: 50%;
+}
+
+.social-icon {
+  display: block;
+  fill: #ffffff;
+}

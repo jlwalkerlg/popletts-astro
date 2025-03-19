@@ -1,0 +1,99 @@
+---
+import ChevronDownIcon from './ChevronDownIcon.astro'
+
+interface Props {
+  heading: string
+  children: any
+  price?: string
+  prices?: string[][]
+}
+
+const { heading, price, prices } = Astro.props
+---
+
+<div class="info-card">
+  <p class="h4">{heading}</p>
+
+  <p>
+    <slot />
+  </p>
+
+  {price && <p class="info-card-price">{price}</p>}
+
+  {
+    prices && (
+      <div class="info-card-pricing">
+        <button class="info-card-price btn-dropdown">
+          <span>See Prices</span>
+          <ChevronDownIcon class="icon-card-price-chevron" />
+        </button>
+
+        <div class="info-card-prices">
+          {prices.map((price) => (
+            <p>
+              <span>{price[0]}</span>
+              <span class="info-card-prices-amount">{price[1]}</span>
+            </p>
+          ))}
+        </div>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .info-card {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+  }
+
+  .info-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--colour-grey);
+    text-align: center;
+  }
+
+  .info-card-price {
+    color: var(--colour-orange);
+    font-weight: 700;
+  }
+
+  .info-card-price-chevron {
+    transition: transform 0.1s ease-out;
+  }
+
+  .info-card-pricing.open .info-card-price-chevron {
+    transform: rotateZ(-180deg);
+  }
+
+  .info-card-prices {
+    font-size: 1.15rem;
+    font-style: italic;
+    margin-top: 1rem;
+  }
+
+  .info-card-pricing:not(.open) .info-card-prices {
+    display: none;
+  }
+
+  .info-card-prices-amount {
+    font-weight: 700;
+  }
+</style>
+
+<script>
+  const pricings = document.querySelectorAll('.info-card-pricing')
+
+  for (const pricing of pricings) {
+    const dropdown = pricing.querySelector('.info-card-price.btn-dropdown')
+
+    dropdown?.addEventListener('click', () => {
+      pricing.classList.toggle('open')
+    })
+  }
+</script>

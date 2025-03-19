@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'section'> {
+  bg?: Promise<{ default: string }>
+}
+
+const bg = Astro.props.bg ? (await Astro.props.bg).default : undefined
+const { bg: _, ...props } = Astro.props
+---
+
+<section data-bg-img={bg} {...props}>
+  <slot />
+</section>
+
+<script>
+  const bgSections = document.querySelectorAll<HTMLElement>(
+    'section[data-bg-img]'
+  )
+
+  for (const section of bgSections) {
+    if (section.dataset.bgImg) {
+      section.style.backgroundImage = `url(${section.dataset.bgImg})`
+    }
+  }
+</script>

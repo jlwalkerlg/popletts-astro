@@ -1,0 +1,25 @@
+<div class="photo-card">
+  <div>
+    <slot name="photo" />
+  </div>
+  <p class="photo-card-caption"><slot name="caption" /></p>
+</div>
+
+<style>
+  .photo-card {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+  }
+
+  .photo-card {
+    background-color: var(--colour-turquoise);
+  }
+
+  .photo-card-caption {
+    color: var(--font-colour-body-lighter);
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-weight: 500;
+  }
+</style>

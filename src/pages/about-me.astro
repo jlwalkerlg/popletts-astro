@@ -1,0 +1,161 @@
+---
+import { Picture } from 'astro:assets'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title="About Me">
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      href={(await import('../assets/images/find-us-faq-background.webp?url'))
+        .default}
+      as="image"
+    />
+  </Fragment>
+
+  <div class="section container about-me-container">
+    <h1 class="h3 about-me-heading">About me</h1>
+
+    <Picture
+      src={import('../assets/images/about-me.jpg')}
+      alt="Shelley with a dog"
+      formats={['webp']}
+      widths={[500, 900, 1131, 1796]}
+      sizes="(min-width: 1163px) 1131px, 100vw"
+      loading="eager"
+      class="about-me-photo"
+    />
+
+    <div class="about-me-info">
+      <p>Hi, I'm Shelley!</p>
+
+      <p>
+        I'm a wife, a mom of four amazing kids, and a proud pet parent to my
+        Beagle, Buddy. I'm also the owner of POPLETT'S DOG GROOMING, where every
+        day I get to do what I love most—working with animals. There's nothing
+        quite like the joy of seeing wagging tails, hearing happy barks, and
+        giving lots of cuddles. I've worked hard to make my grooming salon a
+        place where every pet feels comfortable and loved.
+      </p>
+
+      <p>
+        With over 10 years of experience in dog grooming and more than 20 years
+        in hairdressing, I decided to combine my love for animals with my
+        hairdressing skills and open my own grooming business. I hold NVQ Levels
+        2 and 3 in hairdressing and a diploma in dog grooming, along with
+        training in first aid and dog care & behavior (CPD certified). Plus, my
+        salon is fully insured, so you can rest assured your pet is in safe,
+        caring hands.
+      </p>
+
+      <p>
+        I also love giving back by offering grooming services to local animal
+        shelters, helping fur babies look and feel their best as they get ready
+        to find their forever homes.
+      </p>
+    </div>
+
+    <div class="certifications">
+      <div class="certification">
+        <Picture
+          src={import('../assets/images/icoes-logo.png')}
+          alt="ICEOS logo"
+          formats={['webp']}
+          widths={[124, 248]}
+          sizes="124px"
+          class="certification-logo"
+        />
+      </div>
+      <div class="certification">
+        <Picture
+          src={import('../assets/images/cpd-logo.png')}
+          alt="CPD Certified logo"
+          formats={['webp']}
+          widths={[124, 248]}
+          sizes="124px"
+          class="certification-logo"
+        />
+      </div>
+      <div class="certification">
+        <Picture
+          src={import('../assets/images/nvq-logo.png')}
+          alt="NVQ logo"
+          formats={['webp']}
+          widths={[124, 248]}
+          sizes="124px"
+          class="certification-logo"
+        />
+      </div>
+      <div class="certification">
+        <Picture
+          src={import('../assets/images/reed-courses-logo.png')}
+          alt="Reed Courses logo"
+          formats={['webp']}
+          widths={[124, 248]}
+          sizes="124px"
+          class="certification-logo"
+        />
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  body {
+    background-color: var(--colour-grey);
+  }
+
+  :global(main) {
+    background-image: url('../assets/images/find-us-faq-background.webp');
+    background-size: 100%;
+    background-repeat: repeat-y;
+  }
+
+  .about-me-container {
+    display: grid;
+    gap: 3rem;
+    justify-items: center;
+  }
+
+  .about-me-heading {
+    text-align: center;
+  }
+
+  .about-me-photo {
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+  }
+
+  .about-me-info {
+    max-width: 765px;
+    text-align: justify;
+  }
+
+  .about-me-info > p:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+
+  .certifications {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .certification {
+    width: 124px;
+    height: 124px;
+    background-color: #ffffff;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 576px) {
+    .certifications {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

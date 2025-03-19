@@ -1,11 +1,688 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { Image, Picture } from 'astro:assets'
+import Layout from '../layouts/Layout.astro'
+import FacebookIcon from '../components/FacebookIcon.astro'
+import InstagramIcon from '../components/InstagramIcon.astro'
+import GoogleReview from '../components/GoogleReview.astro'
+import ArrowRightIcon from '../components/ArrowRightIcon.astro'
+import FaqItem from '../components/FaqItem.astro'
+import InfoCard from '../components/InfoCard.astro'
+import PhotoCard from '../components/PhotoCard.astro'
+import Section from '../components/Section.astro'
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Home">
+  <Fragment slot="head">
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href={(await import('swiper/css/bundle?url')).default}
+      media="print"
+      onload="this.media='all'; this.onload=null;"
+    />
+  </Fragment>
+
+  <section class="hero section">
+    <div class="container hero-header">
+      <h1 class="h1">Your dog, our priority!</h1>
+      <p class="subheading">
+        With expert grooming and a loving touch, we make sure your pup leaves
+        looking great and feeling even better.
+      </p>
+      <a href="https://wa.me/+447713345389" target="_blank" class="btn-primary">
+        Schedule a visit
+      </a>
+    </div>
+
+    <Picture
+      src={import('../assets/images/hero-bg-2880.png')}
+      alt="Dogs with soap and bubbles"
+      formats={['webp']}
+      widths={[720, 1440, 2880]}
+      sizes="100vw"
+      class="hero-bg"
+    />
+
+    <Picture
+      src={import('../assets/images/hero-bg-m-860.png')}
+      alt="Dogs with soap and bubbles"
+      formats={['webp']}
+      widths={[430, 860]}
+      sizes="100vw"
+      class="hero-bg-m"
+    />
+  </section>
+
+  <Section
+    class="why-people-love-us section"
+    bg={import('../assets/images/why-people-love-us-background.webp?url')}
+  >
+    <div class="why-people-love-us-header container-small">
+      <h2 class="h2">Why people love us</h2>
+      <p class="subheading">
+        We are with your pet every step of the way, taking extra time to
+        understand their unique personality and needs.
+      </p>
+      <a
+        href="https://wa.me/+447713345389"
+        target="_blank"
+        class="btn-secondary"
+      >
+        Book now!
+      </a>
+    </div>
+
+    <div class="card-grid container">
+      <PhotoCard>
+        <Fragment slot="photo">
+          <Picture
+            src={import('../assets/images/why-people-love-us-1-1130.png')}
+            alt="Yorkshire Terrier being groomed"
+            formats={['webp']}
+            widths={[565, 1130]}
+            sizes="(min-width: 1163px) 549.5px, (min-width: 815px) 50vw, (min-width: 597px) 565px, 110vw"
+          />
+        </Fragment>
+
+        <Fragment slot="caption">Healthy and safe enviroment</Fragment>
+      </PhotoCard>
+
+      <PhotoCard>
+        <Fragment slot="photo">
+          <Picture
+            src={import('../assets/images/why-people-love-us-2-1130.png')}
+            alt="Dog having its nails clipped"
+            formats={['webp']}
+            widths={[565, 1130]}
+            sizes="(min-width: 1163px) 549.5px, (min-width: 815px) 50vw, (min-width: 597px) 565px, 110vw"
+          />
+        </Fragment>
+
+        <Fragment slot="caption">
+          High-quality and fully sterile equipment
+        </Fragment>
+      </PhotoCard>
+
+      <PhotoCard>
+        <Fragment slot="photo">
+          <Picture
+            src={import('../assets/images/why-people-love-us-3-1130.png')}
+            alt="Dog having a hair cut"
+            formats={['webp']}
+            widths={[565, 1130]}
+            sizes="(min-width: 1163px) 549.5px, (min-width: 815px) 50vw, (min-width: 597px) 565px, 110vw"
+          />
+        </Fragment>
+
+        <Fragment slot="caption">
+          Different grooming styles for your pets
+        </Fragment>
+      </PhotoCard>
+
+      <PhotoCard>
+        <Fragment slot="photo">
+          <Picture
+            src={import('../assets/images/why-people-love-us-4-1130.png')}
+            alt="Springer Spaniel eating a treat"
+            formats={['webp']}
+            widths={[565, 1130]}
+            sizes="(min-width: 1163px) 549.5px, (min-width: 815px) 50vw, (min-width: 597px) 565px, 110vw"
+          />
+        </Fragment>
+
+        <Fragment slot="caption">Convenient and affordable</Fragment>
+      </PhotoCard>
+    </div>
+  </Section>
+
+  <Section
+    id="our-services"
+    class="our-services section"
+    bg={import('../assets/images/our-services-background.webp?url')}
+  >
+    <div class="our-services-header container-small">
+      <h2 class="h2">Our services!</h2>
+      <p class="subheading">
+        For any promotional offers please visit our social media.
+      </p>
+      <div class="social-icons">
+        <a
+          class="social-icon-link"
+          href="https://www.facebook.com/people/Popletts-Dog-Grooming/61564858483515/"
+          target="_blank"
+          aria-label="Visit Poplett's Dog Grooming on Facebook"
+        >
+          <FacebookIcon class="social-icon" />
+        </a>
+        <a
+          class="social-icon-link"
+          href="https://www.instagram.com/popletts_grooming/"
+          target="_blank"
+          aria-label="Visit Poplett's Dog Grooming on Instagram"
+        >
+          <InstagramIcon class="social-icon" />
+        </a>
+      </div>
+    </div>
+
+    <div class="card-grid container">
+      <InfoCard
+        heading="Full groom"
+        prices={[
+          ['Small dog', '£25'],
+          ['Medium dog', '£35'],
+          ['Large dog', '£40'],
+        ]}
+      >
+        We use only top-quality products, offering a wide range of shampoos
+        tailored to every coat type. Our full grooming package includes a
+        luxurious shampoo and conditioner, a haircut or styling, nail trimming,
+        ear cleaning and plucking, all topped off with a treat.
+      </InfoCard>
+
+      <InfoCard
+        heading="Bath & Blow-dry"
+        prices={[
+          ['Small dog', '£15'],
+          ['Medium dog', '£20'],
+          ['Large dog', '£25'],
+        ]}
+      >
+        We start with a gentle wash using dog-friendly shampoo, followed by a
+        thorough blow-dry to leave the coat smooth, shiny, and healthy. This
+        process promotes good blood circulation and reduces grease buildup. Our
+        grooming also includes a nail trim to ensure your pet's comfort.
+      </InfoCard>
+
+      <InfoCard heading="Microchipping" price="£10 each">
+        Microchipping your pet is a fast, painless procedure that takes just
+        seconds and doesn't require anesthesia. This tiny device ensures your
+        pet can be easily identified and returned if lost. It's also a legal
+        requirement.
+      </InfoCard>
+
+      <InfoCard heading="Puppy groom" price="£25">
+        Ideal for introducing your puppy to grooming, this service is for dogs
+        aged 12 to 17 weeks only. It includes a bath, brush & blow-dry, ear
+        cleaning, a gentle trim, and an introduction to clippers, all finished
+        with a treat.
+      </InfoCard>
+    </div>
+
+    <div class="container">
+      <Picture
+        src={import('../assets/images/jack-russell-886.png')}
+        alt="Jack Russell"
+        formats={['webp']}
+        widths={[443, 886]}
+        sizes="(min-width: 475px) 443px, 100vw"
+      />
+    </div>
+  </Section>
+
+  <section class="section container">
+    <h2 class="testimonials-section-headline h2">What people say about us</h2>
+
+    <div class="testimonials-section-swiper">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <GoogleReview
+              author="Mikey Brooks"
+              avatar="https://lh3.googleusercontent.com/a/ACg8ocIHuZ4mgPIE1wjN2ChDYsAGgOFFfZqdhlEUvcOz2AN9iDgoFA=s40-c-rp-mo-br100"
+            >
+              Shelley did such an amazing job of Brian's haircut (which he was
+              definitely well over due for!). He smells great and looks so cute.
+              We will definitely be sending him again when he's next due a
+              haircut. We'll definitely recommend to all my friends & family
+              who've got dogs. Thank you Shelley 😀
+            </GoogleReview>
+          </div>
+          <div class="swiper-slide">
+            <GoogleReview
+              author="Danielle Blackmore"
+              avatar="https://lh3.googleusercontent.com/a/ACg8ocILaOn4TlM7mxe9BLYM38HC9t5100QnuelgpEf8USrKkoIdrQ=s40-c-rp-mo-br100"
+            >
+              Rocco's first groom at Popletts & he smells & feels divine! Never
+              managed to get his claws so short so really happy with that! Your
+              lovely Shelly thank you Rocco will definitely be back ❤️
+            </GoogleReview>
+          </div>
+          <div class="swiper-slide">
+            <GoogleReview
+              author="Gabrielle Reinbergs"
+              avatar="https://lh3.googleusercontent.com/a/ACg8ocKvHn3wnRGcI0f1mZULlPlPQFK8rFziLBk2E6sirelql-UFKA=s40-c-rp-mo-br100"
+            >
+              The best, our 18 month golden retriever is absolutely scared of
+              everything and he was put at ease and well looked after. He came
+              out super happy and excited, not to mention looking neat and
+              handsome after his trim and smelling amazing. Thank you again! X
+            </GoogleReview>
+          </div>
+          <div class="swiper-slide">
+            <GoogleReview
+              author="Daniela Smith1998"
+              avatar="https://lh3.googleusercontent.com/a/ACg8ocJGQ_IB142mjRhU6M47gTnNTnj8u5k7riLKjd_z3E-bN4IRdQ=s40-c-rp-mo-br100"
+            >
+              5 star service from popletts today! What a wonderful friendly
+              service! My dog didn't want to leave! His transformation is
+              incredible truly an amazing service! Customer for life now. Thank
+              you.
+            </GoogleReview>
+          </div>
+          <div class="swiper-slide">
+            <GoogleReview
+              author="Richard Worby"
+              avatar="https://lh3.googleusercontent.com/a/ACg8ocL1MFwmBXhdb6--MPwEBV1NTUjBIBzjMCZVpoVh5Yr4SM3Dfg=s40-c-rp-mo-br100"
+            >
+              Took both my dogs otto and blessing shelly done a great job with
+              both especially blessing who can be a bit snappy will definitely
+              be going again x
+            </GoogleReview>
+          </div>
+          <div class="swiper-slide">
+            <GoogleReview
+              author="Laura Brickley"
+              avatar="https://lh3.googleusercontent.com/a/ACg8ocI-9nZTfEAvRAU0ntQpFS2yDXQyRziEDXvnLEXKYa2ZEFGr3Q=s40-c-rp-mo-br100"
+            >
+              Brilliant service will definitely use again
+            </GoogleReview>
+          </div>
+          <div class="swiper-slide">
+            <GoogleReview
+              author="Stacey Read"
+              avatar="https://lh3.googleusercontent.com/a-/ALV-UjXKXncLyobXnirI8jun6XgHCL7iwrUQ8x7ybHMYxeYsuxwYJ0q3wQ=s40-c-rp-mo-br100"
+            >
+              Both our dogs looked and smelled awesome and loved getting a
+              pamper and groom by Shelley. She is so lovely, calm and patient
+              with the dogs. Highly recommend:)
+            </GoogleReview>
+          </div>
+          <div class="swiper-slide">
+            <GoogleReview
+              author="Daniela Pinzon Guzman"
+              avatar="https://lh3.googleusercontent.com/a-/ALV-UjXH0Grac_eoFNg_xcquS_-Vi8uyTEIXso-T53q_-D7nnQC8X2GdTg=s40-c-rp-mo-br100"
+            >
+              Shelley is the best option if you need your dog to look and smell
+              fantastic. She is very professional and treats your dog with
+              plenty of love. I highly recommend her and will definitely be
+              coming back!
+            </GoogleReview>
+          </div>
+          <div class="swiper-slide">
+            <GoogleReview
+              author="James Firth"
+              avatar="https://lh3.googleusercontent.com/a/ACg8ocKXZJirr2_TikVCw8CZ9hnhFysWbzDSgGr4JaAVIbBKGPqqQg=s40-c-rp-mo-br100"
+            >
+              Thank you for grooming Casper so lovely. We absolutely love his
+              new tail 😀🐕. He looks so handsome and came back home happy and
+              full of excitement with his new trim. Good communication from the
+              groomer and would highly recommend.
+            </GoogleReview>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+
+    <p class="testimonials-section-see-more">
+      <a href="https://maps.app.goo.gl/R4uJtXaX1evk5XSy8" target="_blank">
+        See all of our reviews on Google
+        <ArrowRightIcon class="testimonial-section-see-more-arrow" />
+      </a>
+    </p>
+  </section>
+
+  <Section
+    class="find-us-faq"
+    bg={import('../assets/images/find-us-faq-background.webp?url')}
+  >
+    <section class="find-us-section section">
+      <div class="container find-us-container">
+        <div class="find-us-info">
+          <h2 class="h2">Find us!</h2>
+          <p>
+            20 Plumpton Walk, Bradford<br />
+            BD2 1PB
+          </p>
+          <div>
+            <p>Tuesday: 18:00 - 20:00</p>
+            <p>Wednesday: 18:00 - 20:00</p>
+            <p>Thursday: 18:00 - 20:00</p>
+            <p>Friday: 18:00 - 20:00</p>
+            <p>Saturday: 7:00 - 12:00</p>
+            <p>Sunday: 7:00 - 12:00</p>
+            <p>Monday: Closed</p>
+          </div>
+        </div>
+
+        <iframe
+          class="find-us-map"
+          title="Poplett's Dog Grooming | Google Maps"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2354.8556898169595!2d-1.7473985233811782!3d53.827643072432814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487be3ec035cb0bd%3A0xdf08306ad85264f6!2s20%20Plumpton%20Walk%2C%20Bradford%20BD2%201PB!5e0!3m2!1sen!2suk!4v1726266197720!5m2!1sen!2suk"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <section class="faq-section section">
+      <div class="container">
+        <h2 class="h3 faqs-heading">FAQs</h2>
+
+        <div class="faqs-list">
+          <FaqItem>
+            <Fragment slot="header">
+              What are the terms and conditions?
+            </Fragment>
+
+            <Fragment>
+              Owners are required to inform their dog groomer of any known
+              aggressive behaviour their pet may exhibit toward other animals or
+              humans. If your dog has any allergies, please let me know prior to
+              their grooming session. If you need to cancel an appointment,
+              please provide at least 24 hours' notice, allowing the groomer to
+              offer the slot to another client. By choosing Poppett's, you also
+              agree to the filming of grooming sessions for social media
+              marketing purposes.
+            </Fragment>
+          </FaqItem>
+
+          <FaqItem>
+            <Fragment slot="header">
+              Why can't I stay with my dog while he gets groomed?
+            </Fragment>
+
+            <Fragment>
+              Staying with your dog might make it overexcited or anxious, which
+              will hinder the grooming process.
+            </Fragment>
+          </FaqItem>
+
+          <FaqItem>
+            <Fragment slot="header">
+              How do groomers get dogs to stay calm?
+            </Fragment>
+
+            <Fragment>
+              Groomers can relax a dog that feels anxious or nervous by speaking
+              to them in a calm comforting tone and a treat.
+            </Fragment>
+          </FaqItem>
+
+          <FaqItem>
+            <Fragment slot="header">
+              Why is grooming your dog important?
+            </Fragment>
+
+            <Fragment>
+              It's important to your dog's health, cleanliness and protection.
+              It can also help prevent health issues.
+            </Fragment>
+          </FaqItem>
+
+          <FaqItem>
+            <Fragment slot="header"> What if my dog has tics? </Fragment>
+
+            <Fragment>
+              Please seek advice from your vet if you notice your dog has any
+              tics.
+            </Fragment>
+          </FaqItem>
+
+          <FaqItem>
+            <Fragment slot="header"> What if my dog has fleas? </Fragment>
+
+            <Fragment>
+              Please check your dog does not have any fleas prior to his/her
+              groom as we will not be able to provide our grooming service un
+              till your dog is clear of fleas, if we find that fleas are present
+              during the grooming service we will not be able to carry out any
+              grooming service booked.
+            </Fragment>
+          </FaqItem>
+
+          <FaqItem>
+            <Fragment slot="header"> Should I groom my puppy? </Fragment>
+
+            <Fragment>
+              Yes puppies should be groomed to help them stay clean and healthy.
+              The first grooming session should take place after their second
+              round of shots, ideally between 12 and 17 weeks.
+            </Fragment>
+          </FaqItem>
+        </div>
+      </div>
+    </section>
+  </Section>
 </Layout>
+
+<style>
+  body {
+    background-color: var(--colour-grey);
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    margin-top: -86px;
+    display: flex;
+    align-items: center;
+    background-color: var(--colour-turquoise);
+  }
+
+  .hero-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 465px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-bg,
+  .hero-bg-m {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media only screen and (max-width: 430px) {
+    .hero-bg {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: 431px) {
+    .hero-bg-m {
+      display: none;
+    }
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  /* Why people love us */
+  .why-people-love-us {
+    display: grid;
+    gap: 3rem;
+    background-size: contain;
+    background-position-y: 2rem;
+    background-repeat: no-repeat;
+  }
+
+  .why-people-love-us-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  /* Our services */
+  .our-services {
+    display: grid;
+    gap: 3rem;
+    background-color: var(--colour-turquoise);
+    padding-bottom: 0;
+    background-position: 20px 5px;
+    background-size: calc(100% - 20px);
+    background-repeat: repeat-y;
+  }
+
+  .our-services-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .our-services-jack-russell {
+    margin-inline: auto;
+    width: 443px;
+    height: auto;
+  }
+
+  /* Testimonials */
+  .testimonials-section-headline {
+    text-align: center;
+  }
+
+  .testimonials-section-swiper {
+    position: relative;
+    margin-top: 3rem;
+    padding-bottom: 45px;
+  }
+
+  .testimonials-section-swiper {
+    --swiper-navigation-size: 30px;
+    --swiper-navigation-top-offset: calc(
+      100% - var(--swiper-navigation-size) / 2
+    );
+    --swiper-pagination-bottom: 0;
+    --swiper-pagination-top: auto;
+  }
+
+  .swiper-wrapper {
+    cursor: grab;
+  }
+
+  .swiper-slide {
+    height: auto;
+  }
+
+  .testimonials-section-see-more {
+    margin-top: 1rem;
+    font-size: 1rem;
+    text-align: right;
+    text-decoration: underline;
+    vertical-align: middle;
+  }
+
+  .testimonial-section-see-more-arrow {
+    height: 1em;
+    fill: currentColor;
+    vertical-align: middle;
+  }
+
+  /* Find us and FAQ section */
+  .find-us-faq {
+    background-size: 100%;
+    background-repeat: repeat-y;
+  }
+
+  /* Find us */
+  .find-us-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .find-us-info {
+    display: grid;
+    align-content: center;
+    gap: 1.5rem;
+  }
+
+  .find-us-map {
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    aspect-ratio: 60/45;
+  }
+
+  /* FAQs */
+  .faqs-heading {
+    text-align: center;
+  }
+
+  .faqs-list {
+    margin-top: 3rem;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 815px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .find-us-container {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .find-us-info {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 729px) {
+    .testimonials-section-see-more {
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper'
+
+  new Swiper('.swiper', {
+    spaceBetween: 16,
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      730: {
+        slidesPerView: 2,
+      },
+      1047: {
+        slidesPerView: 3,
+      },
+    },
+  })
+</script>

@@ -1,0 +1,79 @@
+<div class="faq">
+  <button class="faq-header">
+    <span><slot name="header" /></span>
+    <svg
+      class="faq-header-chevron"
+      viewBox="0 0 12 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9.87498 1.00001L5.99498 4.88001L2.11498 1.00001C1.92814 0.812752 1.67449 0.70752 1.40998 0.70752C1.14546 0.70752 0.891807 0.812752 0.704976 1.00001C0.314976 1.39001 0.314976 2.02001 0.704976 2.41001L5.29498 7.00001C5.68498 7.39001 6.31498 7.39001 6.70498 7.00001L11.295 2.41001C11.685 2.02001 11.685 1.39001 11.295 1.00001C10.905 0.620005 10.265 0.610005 9.87498 1.00001Z"
+        fill="#BBC8D4"
+        fill-opacity="0.63"></path>
+    </svg>
+  </button>
+  <div class="faq-body">
+    <p>
+      <slot />
+    </p>
+  </div>
+</div>
+
+<style>
+  .faq {
+    background-color: #ffffff;
+    box-shadow: var(--box-shadow);
+    border-radius: 4px;
+    color: var(--font-colour-body-lighter);
+    overflow: hidden;
+  }
+
+  .faq-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s ease-out;
+    text-align: left;
+  }
+
+  .faq-header:hover,
+  .faq.open .faq-header {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .faq-header-chevron {
+    width: 12px;
+    flex-shrink: 0;
+    margin-left: 1rem;
+    transition: transform 0.1s ease-out;
+  }
+
+  .faq.open .faq-header-chevron {
+    transform: rotateZ(-180deg);
+  }
+
+  .faq-body {
+    padding: 0.7rem 1rem;
+    font-size: 1.1rem;
+  }
+
+  .faq:not(.open) .faq-body {
+    display: none;
+  }
+</style>
+
+<script>
+  const faqs = document.querySelectorAll('.faq')
+
+  for (const faq of faqs) {
+    const header = faq.querySelector('.faq-header')
+
+    header?.addEventListener('click', () => {
+      faq.classList.toggle('open')
+    })
+  }
+</script>
