@@ -32,7 +32,7 @@ jobs:
           node-version: 22
         env:
           SITE: https://jlwalkerlg.github.io
-          BASE_URL: /popletts/
+          BASE_URL: /popletts-astro/
 
   deploy:
     name: Deploy
